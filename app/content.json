@@ -1,3 +1,15 @@
 {
-    "bio": "Anubhav is a sophomore at Tufts University studying computer science and entrepreneurship. He is interested in technology and entrepreneurship and is currently working on figuring out what he wants to do with his life."
+    "bio": "Anubhav is a sophomore at Tufts University studying computer science and entrepreneurship. He is interested in technology and entrepreneurship and is currently working on figuring out what he wants to do with his life.",
+    "projects": [
+    {
+      "name": "Rosetta",
+      "description": "Learn a new programming language with reference solutions to problems in a language you know",
+      "url": "https://jumbo-hack-project.vercel.app/"
+    },
+    {
+      "name": "Gymbo",
+      "description": "A more efficient gym routine",
+      "url": "https://github.com/somethinghere0/jumbogym"
+    }
+  ]
 }
