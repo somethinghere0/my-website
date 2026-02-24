@@ -3,15 +3,19 @@
 import { useState } from "react";
 import content from "./content.json";
 
+const LIGHT_BG = "#eceae3";
+const LIGHT_CARD = "#e5e3dc";
+const LIGHT_BORDER = "#d9d7d0";
+
 export default function Home() {
   const [dark, setDark] = useState(false);
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${dark ? "bg-[#1a1a1a]" : "bg-[#f5f0e8]"}`}>
+    <div className={`min-h-screen font-sans transition-colors duration-300`} style={{ background: dark ? "#1a1a1a" : LIGHT_BG }}>
       <main className="max-w-3xl mx-auto px-16 py-20">
 
         {/* Header */}
-        <header className={`border-b pb-8 mb-12 flex items-center justify-between ${dark ? "border-[#333]" : "border-[#e0d9ce]"}`}>
+        <header className={`border-b pb-8 mb-12 flex items-center justify-between`} style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
           <h1 className={`text-4xl font-semibold tracking-tight ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
             Anubhav Sinha
           </h1>
@@ -29,20 +33,35 @@ export default function Home() {
           {content.bio}
         </p>
 
-        {/* Resume */}
+        {/* Resume + Contact */}
         <section className="mt-16">
-          <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
-            Resume
-          </h2>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
-          >
-            <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View Resume</p>
-            <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Opens as PDF</p>
-          </a>
+          <div className="flex divide-x" style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 pr-8 transition-opacity duration-200 hover:opacity-60"
+            >
+              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Resume</p>
+              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View PDF</p>
+            </a>
+            <a
+              href={`mailto:${content.contact.email}`}
+              className="flex-1 px-8 transition-opacity duration-200 hover:opacity-60"
+            >
+              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Email</p>
+              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>{content.contact.email}</p>
+            </a>
+            <a
+              href={content.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 pl-8 transition-opacity duration-200 hover:opacity-60"
+            >
+              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>LinkedIn</p>
+              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View Profile</p>
+            </a>
+          </div>
         </section>
 
         {/* Projects */}
@@ -57,7 +76,8 @@ export default function Home() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
+                className="block p-5 rounded-lg border transition-colors duration-200"
+                style={{ borderColor: dark ? "#333" : LIGHT_BORDER, background: dark ? "#222" : LIGHT_CARD }}
               >
                 <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
                   {project.name}
@@ -70,30 +90,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
-        <section className="mt-16">
-          <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
-            Contact
-          </h2>
-          <div className="flex flex-col gap-4">
-            <a
-              href={`mailto:${content.contact.email}`}
-              className={`block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
-            >
-              <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>Email</p>
-              <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>{content.contact.email}</p>
-            </a>
-            <a
-              href={content.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
-            >
-              <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>LinkedIn</p>
-              <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>{content.contact.linkedin}</p>
-            </a>
-          </div>
-        </section>
+
 
       </main>
     </div>
