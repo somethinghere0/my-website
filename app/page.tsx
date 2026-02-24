@@ -8,7 +8,11 @@ const LIGHT_CARD = "#e5e3dc";
 const LIGHT_BORDER = "#d9d7d0";
 
 export default function Home() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+      : false
+  );
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300`} style={{ background: dark ? "#1a1a1a" : LIGHT_BG }}>
