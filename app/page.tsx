@@ -35,19 +35,21 @@ export default function Home() {
 
         {/* Resume + Contact */}
         <section className="mt-16">
-          <div className="flex divide-x" style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
+          <div className="flex flex-col sm:flex-row sm:divide-x" style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 pr-8 transition-opacity duration-200 hover:opacity-60"
+              className="flex-1 py-4 sm:py-0 sm:pr-8 border-b sm:border-b-0 transition-opacity duration-200 hover:opacity-60"
+              style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}
             >
               <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Resume</p>
               <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View PDF</p>
             </a>
             <a
               href={`mailto:${content.contact.email}`}
-              className="flex-1 px-8 transition-opacity duration-200 hover:opacity-60"
+              className="flex-1 py-4 sm:py-0 sm:px-8 border-b sm:border-b-0 transition-opacity duration-200 hover:opacity-60"
+              style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}
             >
               <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Email</p>
               <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>{content.contact.email}</p>
@@ -56,7 +58,7 @@ export default function Home() {
               href={content.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 pl-8 transition-opacity duration-200 hover:opacity-60"
+              className="flex-1 py-4 sm:py-0 sm:pl-8 transition-opacity duration-200 hover:opacity-60"
             >
               <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>LinkedIn</p>
               <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View Profile</p>
