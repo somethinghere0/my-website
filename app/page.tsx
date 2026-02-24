@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import content from "./content.json";
 
 export default function Home() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300 ${dark ? "bg-[#1a1a1a]" : "bg-[#f5f0e8]"}`}>
@@ -22,6 +23,9 @@ export default function Home() {
             />
           </button>
         </header>
+        <p className={`text-lg leading-8 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>
+          {content.bio}
+        </p>
       </main>
     </div>
   );
