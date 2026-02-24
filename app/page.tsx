@@ -23,7 +23,7 @@ export default function Home() {
             />
           </button>
         </header>
-        <p className={`text-lg leading-8 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>
+        <p className={`text-lg leading-8 max-w-[660px] -mt-9 ${dark ? "text-[#d1d1d1]" : "text-[#3a3a3a]"}`}>
           {content.bio}
         </p>
       </main>
