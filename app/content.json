@@ -1,6 +1,6 @@
 {
-    "bio": "Anubhav is a sophomore at Tufts University studying computer science and entrepreneurship. He is interested in technology and entrepreneurship and is currently working on figuring out what he wants to do this summer.",
-    "projects": [
+  "bio": "Anubhav is a sophomore at Tufts University studying computer science and entrepreneurship. He is interested in technology and entrepreneurship and is currently working on figuring out what he wants to do this summer.",
+  "projects": [
     {
       "name": "Rosetta",
       "description": "Learn a new programming language with reference solutions to problems in a language you know",
@@ -11,5 +11,9 @@
       "description": "A more efficient gym routine",
       "url": "https://github.com/somethinghere0/jumbogym"
     }
-  ]
+  ],
+  "contact": {
+    "email": "anubhav.sinha@tufts.edu",
+    "linkedin": "https://www.linkedin.com/in/anubhav-sinha-8241a8332"
+  }
 }

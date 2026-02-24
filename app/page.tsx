@@ -29,6 +29,22 @@ export default function Home() {
           {content.bio}
         </p>
 
+        {/* Resume */}
+        <section className="mt-16">
+          <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
+            Resume
+          </h2>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
+          >
+            <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View Resume</p>
+            <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Opens as PDF</p>
+          </a>
+        </section>
+
         {/* Projects */}
         <section className="mt-16">
           <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
@@ -51,6 +67,31 @@ export default function Home() {
                 </p>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section className="mt-16">
+          <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
+            Contact
+          </h2>
+          <div className="flex flex-col gap-4">
+            <a
+              href={`mailto:${content.contact.email}`}
+              className={`block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
+            >
+              <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>Email</p>
+              <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>{content.contact.email}</p>
+            </a>
+            <a
+              href={content.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block p-5 rounded-lg border transition-colors duration-200 ${dark ? "border-[#333] hover:border-[#555] bg-[#222]" : "border-[#e0d9ce] hover:border-[#c8bfb0] bg-[#faf7f2]"}`}
+            >
+              <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>LinkedIn</p>
+              <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>{content.contact.linkedin}</p>
+            </a>
           </div>
         </section>
 
