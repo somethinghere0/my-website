@@ -14,7 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           __html: `
             (function() {
               if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                document.documentElement.setAttribute("data-dark", "true");
+                document.documentElement.style.background = "#1a1a1a";
+              } else {
+                document.documentElement.style.background = "#eceae3";
               }
             })();
           `

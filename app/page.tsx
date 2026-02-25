@@ -8,14 +8,11 @@ const LIGHT_CARD = "#e5e3dc";
 const LIGHT_BORDER = "#d9d7d0";
 
 export default function Home() {
-  const [dark, setDark] = useState(() =>
-    typeof document !== "undefined"
-      ? document.documentElement.getAttribute("data-dark") === "true"
-      : false
-  );
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    setDark(mq.matches);
     const handler = (e: MediaQueryListEvent) => setDark(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
