@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import content from "./content.json";
 
 const LIGHT_BG = "#eceae3";
@@ -8,15 +8,7 @@ const LIGHT_CARD = "#e5e3dc";
 const LIGHT_BORDER = "#d9d7d0";
 
 export default function Home() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    setDark(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setDark(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const [dark, setDark] = useState(true);
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300`} style={{ background: dark ? "#1a1a1a" : LIGHT_BG }}>

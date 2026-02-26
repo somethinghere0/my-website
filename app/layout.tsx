@@ -11,15 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                document.documentElement.style.background = "#1a1a1a";
-              } else {
-                document.documentElement.style.background = "#eceae3";
-              }
-            })();
-          `
+          __html: `document.documentElement.style.background = "#1a1a1a";`
         }} />
       </head>
       <body>{children}</body>
