@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{
-          __html: `document.documentElement.style.background = "#1a1a1a";`
+          __html: `document.documentElement.style.background = "#f0ede0";`
         }} />
       </head>
       <body>{children}</body>

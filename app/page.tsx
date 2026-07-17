@@ -3,12 +3,12 @@
 import { useState } from "react";
 import content from "./content.json";
 
-const LIGHT_BG = "#eceae3";
-const LIGHT_CARD = "#e5e3dc";
-const LIGHT_BORDER = "#d9d7d0";
+const LIGHT_BG = "#f0ede0";
+const LIGHT_CARD = "#e8e4d4";
+const LIGHT_BORDER = "#d9d5c4";
 
 export default function Home() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300`} style={{ background: dark ? "#1a1a1a" : LIGHT_BG }}>
