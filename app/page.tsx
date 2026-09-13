@@ -100,9 +100,9 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-6 text-foreground">
             Experience
           </h2>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             {content.experience.map((job) => (
-              <div key={`${job.org}-${job.role}`}>
+              <div key={`${job.org}-${job.role}`} className="rounded-lg border border-border bg-card p-5">
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
                   <p className="font-medium text-foreground">
                     {job.role} <span className="font-normal text-muted">· {job.org}</span>
