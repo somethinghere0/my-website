@@ -1,10 +1,10 @@
 {
-  "bio": "I'm a junior at Tufts majoring in Computer Science with minors in AI Development and Finance. I'm passionate about startups, research, and building things people actually use. I'm motivated by understanding the logic behind code and why it works. I especially like code that is counterintuitive since that's where the opportunity to learn is. When I'm not coding, you'll find me writing for the Tufts Daily, dancing with the Tufts Ballroom Club, or with my nose in a book.",
+  "bio": "I'm a junior at Tufts studying Computer Science, with minors in Finance and AI Development. I like markets and systems for the same reason, they're built on logic that isn't always obvious, and figuring out why something counterintuitive works is where I learn the most. That's the lens I bring to research, startups, and building things people actually use. Outside of that, I write for the Tufts Daily, compete with the Tufts Ballroom Club, and almost always have a book going.",
   "projects": [
     {
       "name": "Rosetta",
       "description": "Learn a new programming language with reference solutions to problems in a language you know",
-      "url": "https://jumbo-hack-project.vercel.app/",
+      "url": "https://github.com/Grant525/Jumbo-Hack-Project-",
       "tags": ["React", "TypeScript"]
     },
     {
@@ -12,6 +12,11 @@
       "description": "A more efficient gym routine",
       "url": "https://github.com/somethinghere0/jumbogym",
       "tags": ["Next.js", "TypeScript", "Python"]
+    },
+    {
+      "name": "Gerp",
+      "description": "A command-line tool that reimplements grep's case-sensitive and case-insensitive search in C++",
+      "tags": ["C++"]
     }
   ],
   "contact": {
