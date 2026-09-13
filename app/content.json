@@ -1,5 +1,39 @@
 {
   "bio": "I'm a junior at Tufts studying Computer Science, with minors in Finance and AI Development. I like markets and systems for the same reason, they're built on logic that isn't always obvious, and figuring out why something counterintuitive works is where I learn the most. That's the lens I bring to research, startups, and building things people actually use. Outside of that, I write for the Tufts Daily, compete with the Tufts Ballroom Club, and almost always have a book going.",
+  "openTo": "Open to summer 2027 internships",
+  "experience": [
+    {
+      "org": "Tufts Panetta Lab",
+      "role": "Research Assistant",
+      "dates": "April 2026 - Present",
+      "bullets": [
+        "Co-authored a research manuscript accepted for publication by IEEE-HKN, testing and evaluating YOLO and RF-DETR architectures for fish migration tracking",
+        "Evaluated and selected open-source LLM architectures for fine-tuning on addiction therapy applications, researching tradeoffs in model size, training requirements, and domain suitability",
+        "Configured and operated LiDAR equipment to collect 3D spatial data, processing raw scans into refined point cloud representations to support a spatial mapping tool for firefighter navigation and situational awareness",
+        "Labeled datasets of up to 300 images using Roboflow to train various models"
+      ]
+    },
+    {
+      "org": "Xceler.ai",
+      "role": "Software Development Intern",
+      "dates": "June 2025 - August 2025",
+      "bullets": [
+        "Developed and tested a trade management platform supporting real-time risk assessment and transparent commodities data for futures and options trading",
+        "Led quality checks on the data pipeline, finding and fixing recurring bugs to ensure the options systems received clean, accurate data",
+        "Researched and analyzed futures and options data to build an efficient, accurate representation of input data"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["C++", "Python", "Java", "SQL", "MATLAB"]
+    },
+    {
+      "category": "Frameworks & Developer Tools",
+      "items": ["Supabase", "PostgreSQL", "Git", "Roboflow", "Linux/Unix", "Vercel"]
+    }
+  ],
   "projects": [
     {
       "name": "Rosetta",
@@ -11,7 +45,9 @@
       "name": "Gymbo",
       "description": "A more efficient gym routine",
       "url": "https://github.com/somethinghere0/jumbogym",
-      "tags": ["Next.js", "TypeScript", "Python"]
+      "tags": ["Next.js", "TypeScript", "Python"],
+      "featured": true,
+      "highlight": "🏆 Hackathon track winner"
     },
     {
       "name": "Gerp",
@@ -21,6 +57,7 @@
   ],
   "contact": {
     "email": "anubhav.sinha@tufts.edu",
-    "linkedin": "https://www.linkedin.com/in/anubhav-sinha-8241a8332"
+    "linkedin": "https://www.linkedin.com/in/anubhav-sinha-8241a8332",
+    "github": "https://github.com/somethinghere0"
   }
 }
