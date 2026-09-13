@@ -4,12 +4,14 @@
     {
       "name": "Rosetta",
       "description": "Learn a new programming language with reference solutions to problems in a language you know",
-      "url": "https://jumbo-hack-project.vercel.app/"
+      "url": "https://jumbo-hack-project.vercel.app/",
+      "tags": ["React", "TypeScript"]
     },
     {
       "name": "Gymbo",
       "description": "A more efficient gym routine",
-      "url": "https://github.com/somethinghere0/jumbogym"
+      "url": "https://github.com/somethinghere0/jumbogym",
+      "tags": ["Next.js", "TypeScript", "Python"]
     }
   ],
   "contact": {

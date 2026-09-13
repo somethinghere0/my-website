@@ -1,58 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import content from "./content.json";
-
-const LIGHT_BG = "#f0ede0";
-const LIGHT_CARD = "#e8e4d4";
-const LIGHT_BORDER = "#d9d5c4";
 
 export default function Home() {
   const [dark, setDark] = useState(false);
 
+  // Sync React state with the theme the inline script in <head> already
+  // applied to <html> before hydration (localStorage choice, or OS default).
+  // This is a legitimate one-shot read of a browser-only value on mount, not
+  // state that belongs in React — hence the lint override.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDark(document.documentElement.getAttribute("data-theme") === "dark");
+  }, []);
+
+  function toggleTheme() {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      // localStorage can be unavailable (private mode, disabled storage) — theme just won't persist.
+    }
+  }
+
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300`} style={{ background: dark ? "#1a1a1a" : LIGHT_BG }}>
-      <main className="max-w-3xl mx-auto px-16 py-20">
+    <div className="min-h-screen font-sans transition-colors duration-300 bg-background">
+      <main className="max-w-3xl mx-auto px-6 sm:px-10 md:px-16 py-16 sm:py-20">
 
         {/* Header */}
-        <header className={`border-b pb-8 mb-12 flex items-center justify-between`} style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
-          <h1 className={`text-4xl font-semibold tracking-tight ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
+        <header className="border-b border-border pb-8 mb-12 flex items-center justify-between animate-fade-in-up">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
             Anubhav Sinha
           </h1>
           <button
-            onClick={() => setDark(!dark)}
-            className={`w-9 h-5 rounded-full relative transition-colors duration-300 focus:outline-none ${dark ? "bg-[#f5f0e8]" : "bg-[#1a1a1a]"}`}
+            onClick={toggleTheme}
+            className="w-9 h-5 rounded-full relative transition-colors duration-300 bg-foreground shrink-0"
             aria-label="Toggle dark mode"
+            aria-pressed={dark}
           >
-            <span className={`absolute top-1/2 -translate-y-1/2 left-[3px] w-3 h-3 rounded-full transition-transform duration-300 ${dark ? "translate-x-[18px] bg-[#1a1a1a]" : "translate-x-[3px] bg-[#f5f0e8]"}`} />
+            <span
+              className="absolute top-1/2 left-[3px] w-3 h-3 rounded-full bg-background transition-transform duration-300"
+              style={{ transform: `translateY(-50%) translateX(${dark ? 18 : 0}px)` }}
+            />
           </button>
         </header>
 
         {/* Bio */}
-        <p className={`text-lg leading-8 max-w-[660px] -mt-9 ${dark ? "text-[#d1d1d1]" : "text-[#3a3a3a]"}`}>
+        <p
+          className="text-lg leading-8 max-w-[640px] -mt-9 text-foreground/80 animate-fade-in-up"
+          style={{ animationDelay: "80ms" }}
+        >
           {content.bio}
         </p>
 
         {/* Resume + Contact */}
-        <section className="mt-16">
-          <div className="flex flex-col sm:flex-row sm:divide-x" style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}>
+        <section className="mt-16 animate-fade-in-up" style={{ animationDelay: "160ms" }}>
+          <div className="flex flex-col sm:flex-row sm:divide-x divide-border">
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-4 sm:py-0 sm:pr-8 border-b sm:border-b-0 transition-opacity duration-200 hover:opacity-60"
-              style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}
+              className="flex-1 py-4 sm:py-0 sm:pr-8 border-b sm:border-b-0 border-border transition-opacity duration-200 hover:opacity-60"
             >
-              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Resume</p>
-              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View PDF</p>
+              <p className="text-xs uppercase tracking-widest mb-2 text-muted">Resume</p>
+              <p className="font-medium text-foreground">View PDF</p>
             </a>
             <a
               href={`mailto:${content.contact.email}`}
-              className="flex-1 py-4 sm:py-0 sm:px-8 border-b sm:border-b-0 transition-opacity duration-200 hover:opacity-60"
-              style={{ borderColor: dark ? "#333" : LIGHT_BORDER }}
+              className="flex-1 py-4 sm:py-0 sm:px-8 border-b sm:border-b-0 border-border transition-opacity duration-200 hover:opacity-60"
             >
-              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>Email</p>
-              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>{content.contact.email}</p>
+              <p className="text-xs uppercase tracking-widest mb-2 text-muted">Email</p>
+              <p className="font-medium text-foreground">{content.contact.email}</p>
             </a>
             <a
               href={content.contact.linkedin}
@@ -60,15 +81,15 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex-1 py-4 sm:py-0 sm:pl-8 transition-opacity duration-200 hover:opacity-60"
             >
-              <p className={`text-xs uppercase tracking-widest mb-2 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>LinkedIn</p>
-              <p className={`font-medium ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>View Profile</p>
+              <p className="text-xs uppercase tracking-widest mb-2 text-muted">LinkedIn</p>
+              <p className="font-medium text-foreground">View Profile</p>
             </a>
           </div>
         </section>
 
         {/* Projects */}
-        <section className="mt-16">
-          <h2 className={`text-xl font-semibold mb-6 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
+        <section className="mt-16 animate-fade-in-up" style={{ animationDelay: "240ms" }}>
+          <h2 className="text-xl font-semibold mb-6 text-foreground">
             Projects
           </h2>
           <div className="flex flex-col gap-4">
@@ -78,21 +99,38 @@ export default function Home() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-5 rounded-lg border transition-colors duration-200"
-                style={{ borderColor: dark ? "#333" : LIGHT_BORDER, background: dark ? "#222" : LIGHT_CARD }}
+                className="group block p-5 rounded-lg border border-border bg-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
-                <p className={`font-medium mb-1 ${dark ? "text-[#f5f0e8]" : "text-[#1a1a1a]"}`}>
-                  {project.name}
-                </p>
-                <p className={`text-sm leading-6 ${dark ? "text-[#a8a8a8]" : "text-[#6e6e6e]"}`}>
+                <div className="flex items-center justify-between gap-4 mb-1">
+                  <p className="font-medium text-foreground">
+                    {project.name}
+                  </p>
+                  <span
+                    aria-hidden="true"
+                    className="text-muted transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </span>
+                </div>
+                <p className="text-sm leading-6 text-muted mb-3">
                   {project.description}
                 </p>
+                {project.tags && project.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-1 rounded-full border border-border text-muted"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </a>
             ))}
           </div>
         </section>
-
-
 
       </main>
     </div>

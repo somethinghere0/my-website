@@ -1,15 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f3ef;
+  --background: #f0ede0;
+  --card: #e8e4d4;
   --foreground: #1a1a1a;
   --muted: #6e6e6e;
-  --border: #e0d9ce;
+  --border: #d9d5c4;
+}
+
+/* Follow the OS preference when the visitor hasn't made an explicit choice. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #1a1a1a;
+    --card: #222222;
+    --foreground: #f5f0e8;
+    --muted: #a8a8a8;
+    --border: #333333;
+  }
+}
+
+/* Explicit choice (toggled + persisted in localStorage) always wins. */
+:root[data-theme="dark"] {
+  --background: #1a1a1a;
+  --card: #222222;
+  --foreground: #f5f0e8;
+  --muted: #a8a8a8;
+  --border: #333333;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-card: var(--card);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -17,5 +41,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Söhne", "ui-sans-serif", "system-ui", -apple-system, sans-serif;
+  font-family: var(--font-sans), "ui-sans-serif", "system-ui", -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
 }
