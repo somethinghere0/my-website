@@ -65,17 +65,19 @@ function Section({
   number,
   title,
   children,
+  className = "",
 }: {
   id: string;
   number: string;
   title: string;
   children: ReactNode;
+  className?: string;
 }) {
   return (
     <section
       id={id}
       style={{ scrollMarginTop: "4rem" }}
-      className="border-t border-border pt-6 pb-20 md:grid md:grid-cols-[200px_1fr] md:gap-10"
+      className={`border-t border-border pt-6 pb-20 md:grid md:grid-cols-[200px_1fr] md:gap-10 ${className}`}
     >
       <Reveal>
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-8 md:mb-0 md:sticky md:top-20">
@@ -119,21 +121,26 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
 
-  // Highlight the menu item for the section currently in the middle of the viewport.
+  // Highlight the last section whose top has reached the header. Anchor
+  // clicks scroll a section's top to just under the header (scroll-margin),
+  // so the clicked item always lights up, and no page-bottom special case is
+  // needed because the last section is tall enough to reach the same line.
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    navItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const update = () => {
+      let current = "";
+      for (const { id } of navItems) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 96) current = id;
+      }
+      setActive(current);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   function toggleTheme() {
@@ -378,7 +385,7 @@ export default function Home() {
         </Section>
 
         {/* ---------- Contact ---------- */}
-        <Section id="contact" number="05" title="Contact">
+        <Section id="contact" number="05" title="Contact" className="min-h-[calc(100vh-4rem)]">
           <Reveal>
             <p className="font-display text-4xl leading-tight sm:text-6xl">
               Say hello<span className="text-accent">.</span>
@@ -389,6 +396,31 @@ export default function Home() {
             >
               {content.contact.email}
             </a>
+          </Reveal>
+
+          <Reveal delay={100} className="mt-16">
+            <ul className="border-b border-border">
+              {quickLinks.map((link) => (
+                <li key={link.label} className="border-t border-border">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-5"
+                  >
+                    <span className="font-display text-3xl transition-colors duration-200 group-hover:text-accent sm:text-4xl">
+                      {link.label}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="font-display text-3xl text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent"
+                    >
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </Section>
       </main>
