@@ -1,5 +1,5 @@
 {
-  "bio": "I'm a junior at Tufts studying Computer Science, with minors in Finance and AI Development. I like markets and systems for the same reason, they're built on logic that isn't always obvious, and figuring out why something counterintuitive works is where I learn the most. That's the lens I bring to research, startups, and building things people actually use. Outside of that, I write for the Tufts Daily, compete with the Tufts Ballroom Club, and almost always have a book going.",
+  "bio": "I'm a junior at Tufts studying Computer Science, with minors in Finance and AI Development. I like markets and computers for the same reason, they're built on logic that isn't always obvious. That's the lens I bring to research, work and problem solving. Outside of that, I write for the Tufts Daily, compete with the Tufts Ballroom Club, and almost always have a book going.",
   "openTo": "Open to summer 2027 internships",
   "experience": [
     {
@@ -27,11 +27,24 @@
   "skills": [
     {
       "category": "Languages",
-      "items": ["C++", "Python", "Java", "SQL", "MATLAB"]
+      "items": [
+        "C++",
+        "Python",
+        "Java",
+        "SQL",
+        "MATLAB"
+      ]
     },
     {
       "category": "Frameworks & Developer Tools",
-      "items": ["Supabase", "PostgreSQL", "Git", "Roboflow", "Linux/Unix", "Vercel"]
+      "items": [
+        "Supabase",
+        "PostgreSQL",
+        "Git",
+        "Roboflow",
+        "Linux/Unix",
+        "Vercel"
+      ]
     }
   ],
   "projects": [
@@ -39,20 +52,29 @@
       "name": "Rosetta",
       "description": "Learn a new programming language with reference solutions to problems in a language you know",
       "url": "https://github.com/Grant525/Jumbo-Hack-Project-",
-      "tags": ["React", "TypeScript"]
+      "tags": [
+        "React",
+        "TypeScript"
+      ]
     },
     {
       "name": "Gymbo",
       "description": "A more efficient gym routine",
       "url": "https://github.com/somethinghere0/jumbogym",
-      "tags": ["Next.js", "TypeScript", "Python"],
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Python"
+      ],
       "featured": true,
-      "highlight": "🏆 Emerging Technology track winner"
+      "highlight": "Emerging Technology track winner"
     },
     {
       "name": "Gerp",
       "description": "A command-line tool that reimplements grep's case-sensitive and case-insensitive search in C++",
-      "tags": ["C++"]
+      "tags": [
+        "C++"
+      ]
     }
   ],
   "contact": {
